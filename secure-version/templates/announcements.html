@@ -1,0 +1,26 @@
+{% extends "base.html" %}  
+{% block content %}  
+<div class="card">  
+<h2>Announcements</h2>  
+<table>  
+<tr>  
+<th>Title</th>  
+<th>Message</th>  
+<th>File</th>  
+</tr>  
+{% for a in announcements %}  
+<tr>  
+<td>{{ a.title }}</td>  
+<td>{{ a.message}}</td>  
+<td>  
+{% if a.file %}  
+<a href="{{ url_for('static', filename='uploads/' + a.file) }}">Download</a>  
+{% else %}  
+No File  
+{% endif %}  
+</td>  
+</tr>  
+{% endfor %}  
+</table>  
+</div>  
+{% endblock %}       

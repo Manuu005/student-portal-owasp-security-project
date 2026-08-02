@@ -1,0 +1,11 @@
+{% extends "base.html" %}  
+{% block content %}  
+<h1>Edit Attendance</h1>  
+<form method="POST">  
+<label>Total Classes</label><br>  
+<input type="text" name="total" value="{{ attendance.total_classes }}"><br><br>  
+<label>Attended Classes</label><br>  
+<input type="text" name="attended" value="{{ attendance.attended }}"><br><br>  
+<button type="submit">Update Attendance</button>  
+</form>  
+{% endblock %}     

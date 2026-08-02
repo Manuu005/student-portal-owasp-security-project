@@ -1,0 +1,42 @@
+{% extends "base.html" %}  
+{% block content %}  
+<h1>Edit Student</h1>  
+<form method="POST">  
+<label>Name</label><br>  
+<input type="text" name="name" value="{{ student.name }}"><br><br>  
+<label>Branch</label><br>  
+<input type="text" name="branch" value="{{ student.branch }}"><br><br>  
+<label>Semester</label><br>  
+<input type="text" name="semester" value="{{ student.semester }}"><br><br>  
+<label>Status</label><br>  
+<select name="status">  
+<option value="Active" {% if student.status == 'Active' %}selected{% endif %}>  
+Active (Currently Studying)  
+</option>  
+  
+    <option value="Promoted" {% if student.status == 'Promoted' %}selected{% endif %}>         Promoted (Moved to Next 
+Semester)  
+    </option>  
+  
+    <option value="Detained" {% if student.status == 'Detained' %}selected{% endif %}>  
+        Detained (Low Attendance)  
+    </option>  
+  
+    <option value="Pass" {% if student.status == 'Pass' %}selected{% endif %}>  
+        Pass (Cleared Exams)  
+    </option>  
+  
+    <option value="Fail" {% if student.status == 'Fail' %}selected{% endif %}>  
+        Fail (Backlogs)  
+    </option>  
+  
+    <option value="TC" {% if student.status == 'TC' %}selected{% endif %}>  
+        TC (Left College)  
+    </option>  
+  
+</select><br><br>  
+<button type="submit">Update Student</button>  
+  
+</form>  
+  
+{% endblock %}  

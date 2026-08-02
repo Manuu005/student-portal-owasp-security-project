@@ -1,0 +1,69 @@
+{% extends 'base.html' %}  
+  
+{% block content %}  
+      
+<h1> Student Dashboard</h1>  
+  
+<div style ="margin-top: 20px; max-width: 600px;">  
+        <table cellpadding="10" cellspacing="0" width="100%" border="0">  
+        <tr>  
+           <td><strong>Name</strong></td>  
+           <td>{{ student.name }}</td>  
+        </tr>  
+  
+        <tr>  
+           <td><strong>Branch</strong></td>  
+           <td>{{ student.branch }}</td>  
+        </tr>  
+  
+        <tr>  
+           <td><strong>Semester</strong></td>  
+           <td>{{ student.semester }}</td>  
+        </tr>  
+  
+        {% set year = (student.semester + 1) // 2 %}  
+  
+        <tr>  
+           <td><strong>Year</strong></td>  
+           <td>{{ year }} Year</td>  
+        </tr>  
+  
+        <tr>  
+            <td><strong>Fee Status</strong></td>  
+            <td style="color: green; font-weight: bold;">Paid</td>  
+        </tr>  
+  
+        <tr>  
+            <td><strong>Registration Status</strong></td>  
+            <td style="color: green; font-weight: bold;">Registered</td>  
+        </tr>  
+  
+<tr>  
+    <td><strong>Status</strong></td>  
+    <td>  
+        {% if student.status == 'Pass' %}  
+            <span style="color: green; font-weight: bold;">Pass</span>         {% elif student.status == 'Promoted' %}  
+            <span style="color: green; font-weight: bold;">Promoted</span>  
+  
+        {% elif student.status == 'Active' %}  
+            <span style="color: green; font-weight: bold;">Active</span>  
+  
+        {% elif student.status == 'Fail' %}  
+            <span style="color: red; font-weight: bold;">Fail</span>  
+  
+        {% elif student.status == 'Detained' %}  
+            <span style="color: red; font-weight: bold;">Detained</span>  
+  
+        {% elif student.status == 'TC' %}  
+            <span style="color: orange; font-weight: bold;">TC</span>  
+  
+        {% else %}  
+            <span>{{ student.status }}</span>  
+        {% endif %}  
+    </td>  
+</tr>  
+  
+    </table>  
+  
+</div>  
+{% endblock %} 

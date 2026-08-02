@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Manage Attendance</h1>
+
+<form method="GET">
+    <label>Select Student:</label>
+    <select name="student_id" onchange="this.form.submit()">
+        <option value="">-- Select Student --</option>
+        
+        {% for s in students %}
+            <option value="{{ s.student_id }}"
+            {% if selected_student == s.student_id|string %}selected{% endif %}>
+                {{ s.name }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
+
+<br>
+
+<table border="1" cellpadding="10">
+<tr>
+    <th>Student</th>
+    <th>Subject</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+
+{% for a in attendance %}
+<tr>
+    <td>{{ a.name }}</td>
+    <td>{{ a.subject_name }}</td>
+
+    <td>
+        <form method="POST" action="/admin/add_attendance">
+            <input type="hidden" name="student_id" value="{{ a.student_id }}">
+            <input type="hidden" name="subject_id" value="{{ a.subject_id }}">
+
+            <select name="status">
+                <option>Present</option>
+                <option>Absent</option>
+            </select>
+
+            <button type="submit">Save</button>
+        </form>
+    </td>
+
+    <td>Daily Entry</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

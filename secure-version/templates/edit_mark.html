@@ -1,0 +1,11 @@
+{% extends "base.html" %}  
+{% block content %}  
+<h1>Edit Marks</h1>  
+<form method="POST">  
+<label>Internal Marks</label><br>  
+<input type="text" name="internal" value="{{ mark.internal_marks }}"><br><br>  
+<label>External Marks</label><br>  
+<input type="text" name="external" value="{{ mark.external_marks }}"><br><br>  
+<button type="submit">Update Marks</button>  
+</form>  
+{% endblock %}  

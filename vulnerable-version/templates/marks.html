@@ -1,0 +1,32 @@
+{% extends "base.html" %} 
+ 
+{% block content %} 
+ 
+<h1>Marks</h1> 
+ 
+<table border="1" cellpadding="10" width="100%"> 
+<tr> 
+    <th>Subject</th> 
+    <th>Internal Marks</th> 
+    <th>External Marks</th> 
+    <th>Total</th> 
+</tr> 
+ 
+{% if marks %} 
+    {% for mark in marks %} 
+    <tr> 
+        <td>{{ mark.subject_name }}</td> 
+        <td>{{ mark.internal_marks }}</td> 
+        <td>{{ mark.external_marks }}</td> 
+        <td>{{ mark.total_marks }}</td> 
+    </tr> 
+    {% endfor %} 
+{% else %} 
+    <tr> 
+        <td colspan="4">No marks available</td> 
+    </tr> 
+{% endif %} 
+ 
+</table> 
+ 
+{% endblock %}

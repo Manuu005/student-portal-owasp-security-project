@@ -1,0 +1,54 @@
+{% extends "base.html" %} 
+ 
+{% block content %} 
+ 
+<h1>Manage Marks</h1> 
+ 
+<form method="GET"> 
+    <label>Select Student:</label> 
+    <select name="student_id" onchange="this.form.submit()"> 
+        <option value="">-- Select Student --</option> 
+         
+        {% for s in students %} 
+            <option value="{{ s.student_id }}" 
+            {% if selected_student == s.student_id|string %}selected{% endif %}> 
+                {{ s.name }} 
+            </option> 
+        {% endfor %} 
+    </select> 
+</form> 
+ 
+<br> 
+ 
+<table border="1" cellpadding="10"> 
+<tr> 
+    <th>Student</th> 
+    <th>Subject</th> 
+    <th>Internal</th> 
+    <th>External</th> 
+    <th>Total</th> 
+    <th>Action</th> 
+</tr> 
+ 
+{% for m in marks %} 
+<tr> 
+    <td>{{ m.name }}</td> 
+    <td>{{ m.subject_name }}</td> 
+    <td>{{ m.internal_marks }}</td> 
+    <td>{{ m.external_marks }}</td> 
+    <td>{{ m.total_marks }}</td> 
+ 
+    <td> 
+        <form method="POST" action="/admin/add_mark"> 
+            <input type="hidden" name="student_id" value="{{ m.student_id }}"> 
+            <input type="hidden" name="subject_id" value="{{ m.subject_id }}"> 
+ 
+            <input type="number" name="internal" value="{{ m.internal_marks }}" required> 
+            <input type="number" name="external" value="{{ m.external_marks }}" required> 
+<button type="submit">Save</button> 
+</form> 
+</td> 
+</tr> 
+{% endfor %} 
+</table> 
+{% endblock %}

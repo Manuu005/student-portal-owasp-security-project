@@ -1,0 +1,28 @@
+{% extends "base.html" %}  
+{% block content %}  
+<h1>Manage Announcements</h1>  
+<h3>Add New Announcement</h3>  
+<form method="POST">  
+<label>Title</label><br>  
+<input type="text" name="title"><br><br>  
+<label>Message</label><br>  
+<textarea name="message"></textarea><br><br>  
+<button type="submit">Post Announcement</button>  
+<label>Upload File</label>  
+<input type="file" name="file">  
+<br><br>  
+<button type="submit">Post</button>  
+</form>  
+<hr>  
+<h3>Existing Announcements</h3>  
+<ul>  
+{% for a in announcements %}  
+<li>  
+<b>{{ a.title }}</b> - {{ a.message }}  
+<a href="{{ url_for('delete_announcement', announcement_id=a.announcement_id) }}">  
+<button>Delete</button>  
+</a>  
+</li>  
+{% endfor %}  
+</ul>  
+{% endblock %}  

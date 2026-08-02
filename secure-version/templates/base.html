@@ -1,0 +1,123 @@
+<!DOCTYPE html> 
+<html lang="eng"> 
+<head> 
+        <meta charset="UTF-8"> 
+        <title>Student Admin Portal</title> 
+ 
+<style> 
+body{ 
+    margin:0; 
+    font-family:'Segoe UI',sans-serif; 
+    background:#eef2f7; 
+} 
+ 
+.layout{ 
+    display:flex; 
+    min-height:100vh; 
+} 
+ 
+.sidebar{ 
+    width:240px; 
+    background:#1e293b; 
+    color:white; 
+} 
+ 
+.sidebar h2{ 
+    text-align:center; 
+    padding:20px 0; 
+} 
+ 
+.sidebar a{ 
+    display:block; 
+    padding:12px 20px; 
+    color:#cbd5e1; 
+} 
+text-decoration:none; 
+transition:0.3s; 
+.sidebar a:hover{ 
+background:#334155; 
+color:white; 
+} 
+.main-content{ 
+flex:1; 
+padding:30px; 
+} 
+.card{ 
+background:white; 
+padding:20px; 
+border-radius:12px; 
+box-shadow:0 4px 12px rgba(0,0,0,0.08); 
+margin-bottom:20px; 
+} 
+table{ 
+width:100%; 
+border-collapse:collapse; 
+} 
+th,td{ 
+padding:12px; 
+border-bottom:1px solid #ddd; 
+} 
+th{ 
+background:#1e293b; 
+color:white; 
+} 
+button{ 
+padding:6px 12px; 
+border:none; 
+border-radius:6px; 
+cursor:pointer; 
+font-size:14px; 
+} 
+.btn-edit{background:#3b82f6;color:white;} 
+.btn-delete{background:#ef4444;color:white;} 
+.btn-add{background:#22c55e;color:white;} 
+input, textarea{ 
+width:100%; 
+padding:8px; 
+border-radius:6px; 
+border:1px solid #ccc; 
+} 
+footer{ 
+margin-top:30px; 
+text-align:center; 
+color:#777; 
+} 
+</style> 
+</head> 
+<body> 
+<div class="layout"> 
+<div class="sidebar"> 
+<h2>Student Portal</h2> 
+        {% if session.get('role') == 'admin' %} 
+ 
+                <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a> 
+                <a href="{{ url_for('manage_students') }}">Manage Students</a> 
+                <a href="{{ url_for('manage_marks') }}">Manage Marks</a> 
+                <a href="{{ url_for('manage_attendance') }}">Manage Attendance</a> 
+                <a href="{{ url_for('manage_announcements') }}">Manage Announcements</a> 
+        {% else %} 
+ 
+            <a href="{{ url_for('student_dashboard') }}">Dashboard</a> 
+            <a href="{{ url_for('marks_page') }}">Marks</a> 
+            <a href="{{ url_for('attendance_page') }}">Attendance</a> 
+            <a href="{{ url_for('announcements_page') }}">Announcements</a> 
+        {% endif %} 
+ 
+        <a href="{{ url_for('logout') }}">Logout</a> 
+    </div> 
+ 
+    <div class="main-content"> 
+ 
+        {% block content %} 
+        {% endblock %} 
+ 
+        <footer> 
+            <p>Student Portal</p> 
+        </footer> 
+ 
+    </div> 
+ 
+</div> 
+ 
+</body> 
+</html>

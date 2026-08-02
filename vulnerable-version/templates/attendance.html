@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Attendance</h1>
+<table border="1" cellpadding="10"> 
+<tr> 
+<th>Subject</th> 
+<th>Total Classes</th> 
+<th>Attended</th> 
+<th>Attendance %</th> 
+</tr> 
+{% for a in attendance %} 
+<tr> 
+<td>{{ a.subject_name }}</td> 
+<td>{{ a.total_classes }}</td> 
+<td>{{ a.attended_classes }}</td> 
+<td>{{ a.percentage }}%</td> 
+</tr> 
+{% endfor %} 
+</table> 
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+<h2>Add Student</h2>
+<form method="POST">
+<label>Name</label>
+<input type="text" name="name">
+<label>Branch</label>
+<input type="text" name="branch">
+<label>Semester</label>
+<input type="text" name="semester">
+<label>Username</label>
+<input type="text" name="username">
+<label>Password</label>
+<input type="text" name="password">
+<br><br>
+<button>Add Student</button>
+</form>
+</div>
+{% endblock %}
